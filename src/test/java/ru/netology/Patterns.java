@@ -17,8 +17,8 @@ public class Patterns {
     void cardDeliveryWithCalendar() {
 
         open("http://localhost:9999");
+//        $("[data-test-id='city'] .input__control").setValue(new UsersInfo().getCity());
         $("[data-test-id='city'] .input__control").setValue(new UsersInfo().faker.address().cityName());
-
         $(By.cssSelector(("[data-test-id=\"date\"]  .input__box"))).click();
         int addDay = 7;
         LocalDate today = LocalDate.now();
@@ -29,8 +29,11 @@ public class Patterns {
             $(By.cssSelector(".calendar__title [class='calendar__arrow calendar__arrow_direction_right']")).click();
             $(byText(String.valueOf(needDay.getDayOfMonth()))).click();
         }
+
         $("[data-test-id='name'] .input__control").setValue(new UsersInfo().faker.name().fullName());
+//        $("[data-test-id='name'] .input__control").setValue(new UsersInfo().getName());
         $("[data-test-id=\"phone\"] .input__control").setValue(new UsersInfo().faker.phoneNumber().phoneNumber());
+//        $("[data-test-id=\"phone\"] .input__control").setValue(new UsersInfo().getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[role=\"button\"] .button__content").click();
         $(withText("Успешно")).shouldBe(Condition.visible, Duration.ofSeconds(25));

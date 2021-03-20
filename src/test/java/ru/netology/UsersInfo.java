@@ -11,7 +11,7 @@ import java.util.Locale;
 
 public class UsersInfo {
     Faker faker = new Faker(new Locale("ru"));
-    private String name;
-    private String phone;
-    private String city;
+    private String name = faker.name().fullName();
+    private String phone = faker.phoneNumber().phoneNumber();
+    private String city = faker.address().cityName();
 }
