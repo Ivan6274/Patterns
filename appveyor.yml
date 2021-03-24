@@ -12,7 +12,7 @@ install:
   
 
   - chmod +x gradlew
-  - java -jar ./artifacts/app-card-delivery.jar -port=9999 &
+  - java -jar ./artifacts/app-card-delivery.jar -port=8888 &
 
 build_script:
   - ./gradlew test --info "-Dselenide.headless=true"
