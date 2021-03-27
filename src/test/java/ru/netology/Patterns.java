@@ -25,7 +25,7 @@ public class Patterns {
         int addDay = 7;
         LocalDate today = LocalDate.now();
         LocalDate needDay = today.plusDays(addDay);
-        if ((needDay.getDayOfMonth() + addDay) >= LocalDate.MAX.getDayOfMonth()) {
+        if ((today.getDayOfMonth() + addDay) <= LocalDate.MAX.getDayOfMonth()) {
             $(withText(String.valueOf(needDay.getDayOfMonth()))).click();
         } else {
             $(By.cssSelector(".calendar__title [class='calendar__arrow calendar__arrow_direction_right']")).click();
@@ -40,14 +40,14 @@ public class Patterns {
         $("[data-test-id=\"date\"]  .input__box").click();
         int addDay1 = 10;
         LocalDate newDay = today.plusDays(addDay1);
-        if ((newDay.getDayOfMonth() + addDay1) >= LocalDate.MAX.getDayOfMonth()) {
+        if ((needDay.getDayOfMonth() + addDay1) <= LocalDate.MAX.getDayOfMonth()) {
             $(withText(String.valueOf(newDay.getDayOfMonth()))).click();
         } else {
             $(By.cssSelector(".calendar__title [class='calendar__arrow calendar__arrow_direction_right']")).click();
             $(byText(String.valueOf(newDay.getDayOfMonth()))).click();
         }
         $("[role=\"button\"] .button__content").click();
-        $(withText("Перепланировать")).shouldBe(Condition.visible, Duration.ofSeconds(25)).click();
+        $("[data-test-id=\"replan-notification\"] .button").shouldBe(Condition.visible, Duration.ofSeconds(25)).click();
         $(withText(newDay.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")))).shouldBe(Condition.visible, Duration.ofSeconds(25));
 
     }
