@@ -26,7 +26,7 @@ public class Patterns {
         LocalDate today = LocalDate.now();
         LocalDate needDay = today.plusDays(addDay);
         if ((today.getDayOfMonth() + addDay) <= LocalDate.MAX.getDayOfMonth()) {
-            $(withText(String.valueOf(needDay.getDayOfMonth()))).click();
+            $(byText(String.valueOf(needDay.getDayOfMonth()))).click();
         } else {
             $(By.cssSelector(".calendar__title [class='calendar__arrow calendar__arrow_direction_right']")).click();
             $(byText(String.valueOf(needDay.getDayOfMonth()))).click();
